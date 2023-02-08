@@ -1,23 +1,30 @@
 const path = require("path");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const { BundleAnalyzerPlugin }  = require("webpack-bundle-analyzer")
 
 
 const mode = process.env.NODE_ENV || "development";
 const devMode = mode === "development"
 const target = devMode ? "web" : "browserslist";
-const devtool = devMode ? "source-map" : undefined;
+const devtool = devMode ? "source-map" : false;
+const homeDir = "src";
 
 module.exports = {
     mode,
     target,
     devtool,
     devServer: {
+        static: {
+            directory: path.join(__dirname, 'dist'),
+        },
+        compress: true,
         port: 3000,
         open: true,
         hot: true
     },
-    entry: [ "@babel/polyfill", path.resolve(__dirname, "src", "index.js")],
+    context: path.resolve(__dirname, homeDir),
+    entry: [ "@babel/polyfill", path.resolve(__dirname, homeDir, "index.js")],
     output: {
         path: path.resolve(__dirname, "dist"),
         clean: true,
@@ -26,17 +33,18 @@ module.exports = {
     },
     plugins: [
         new HtmlWebpackPlugin({
-            template: path.resolve(__dirname, "src", "index.html")
+            template: path.resolve(__dirname, homeDir, "index.html")
         }),
         new MiniCssExtractPlugin({
             filename: "[name].[contenthash].css"
-        })
+        }),
+        // new BundleAnalyzerPlugin()
     ],
     module: {
         rules: [
             {
                 test: /\.html$/i,
-                loader: "html-loader",
+                use: "html-loader",
             },
             {
                 test: /\.(c|sa|sc)ss$/i,
