@@ -1,9 +1,10 @@
 import "./index.html";
 import "./index.scss";
-import {mult, sum} from "./modules/calc";
+import React from 'react';
+import Home from "./pages/home";
+import * as ReactDOM from "react-dom";
 
-
-
-
-console.log(mult(2, 4));
-console.log(sum(3, 4));
+ReactDOM.render(
+    <Home/>,
+    document.getElementById('App')
+)

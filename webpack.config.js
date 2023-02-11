@@ -50,7 +50,12 @@ module.exports = {
                 test: /\.(c|sa|sc)ss$/i,
                 use: [
                     devMode ? "style-loader" : MiniCssExtractPlugin.loader,
-                    "css-loader",
+                    {
+                        loader:"css-loader",
+                        // options: {
+                        //     url: false,
+                        // },
+                    },
                     {
                         loader: "postcss-loader",
                         options: {
@@ -98,7 +103,7 @@ module.exports = {
                 },
                 type: "asset/resource",
                 generator: {
-                    filename: "assets/image/[name][ext]"
+                    filename: "assets/img/[name][ext]"
                 }
             },
             {
@@ -108,7 +113,7 @@ module.exports = {
                     loader: 'babel-loader',
                     options: {
                         presets: [
-                            ['@babel/preset-env', { targets: "defaults" }]
+                            ['@babel/preset-react', { targets: "defaults" }]
                         ]
                     }
                 }

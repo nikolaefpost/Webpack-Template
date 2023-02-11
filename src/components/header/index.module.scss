@@ -1,0 +1,20 @@
+@import "../../style/mixins";
+@import "../../style/colors";
+
+header {
+  padding: 20px 40px;
+  user-select: none;
+  @include fonts(400, 32px, 32px, $hot_pink);
+  height: 100px;
+  position: relative;
+
+  & .pic {
+    position: absolute;
+    right: 0;
+    width: 100px;
+    height: 100px;
+    background-image: url("~/assets/img/graphic_violet.png");
+    background-size: cover;
+    z-index: 10;
+  }
+}

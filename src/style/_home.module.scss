@@ -1,0 +1,53 @@
+@import "mixins";
+@import "colors";
+
+
+body {
+  background-color: $ambrosia_cake;
+  font-family: Explora, cursive;
+  //font-family: Archivo;
+}
+
+//header {
+//  padding: 20px 40px;
+//  user-select: none;
+//  @include fonts(400, 32px, 32px, $hot_pink);
+//  height: 100px;
+//  position: relative;
+//
+//  & .pic {
+//    position: absolute;
+//    right: 0;
+//    width: 100px;
+//    height: 100px;
+//    background-image: url("~/assets/img/graphic_violet.png");
+//    background-size: cover;
+//    z-index: 10;
+//  }
+//}
+
+main {
+
+  height: calc(100vh - 72px);
+  background: #a3b1d0;
+
+  & .img{
+    width: 300px;
+    height: 300px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image: url("~/assets/img/graphic_violet.png");
+  }
+}
+
+footer {
+  position: fixed;
+  left: 0;
+  width: 100%;
+  background: $fresh_guacamole;
+  bottom: 0;
+
+  & img {
+    width: 50px;
+  }
+}
